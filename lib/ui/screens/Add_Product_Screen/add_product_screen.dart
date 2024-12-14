@@ -50,8 +50,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
             children: [
               TextFormField(
                 controller: _nameTEController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'Name', labelText: 'Product name'),
                 validator: (String? value) {
                   if (value
@@ -65,9 +65,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
               const SizedBox(height: 16),
               TextFormField(
                 controller: _priceTEController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'Price', labelText: 'Product Price'),
                 validator: (String? value) {
                   if (value
@@ -81,9 +81,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
               const SizedBox(height: 16),
               TextFormField(
                 controller: _totalPriceTEController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'Total price',
                     labelText: 'Product Total Price'),
                 validator: (String? value) {
@@ -98,9 +98,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
               const SizedBox(height: 16),
               TextFormField(
                 controller: _quantityTEController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'Quantity', labelText: 'Product Quantity'),
                 validator: (String? value) {
                   if (value
@@ -114,8 +114,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
               const SizedBox(height: 16),
               TextFormField(
                 controller: _codeTEController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: 'Code', labelText: 'Product Code'),
                 validator: (String? value) {
                   if (value
@@ -129,8 +129,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
               const SizedBox(height: 16),
               TextFormField(
                 controller: _imageTEController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
                     hintText: 'Image url', labelText: 'Product Image'),
                 validator: (String? value) {
                   if (value
@@ -147,17 +147,24 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 replacement: const Center(
                   child: CircularProgressIndicator(),
                 ),
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _addProduct();
-                      print("add product");
-                    }
-                    else  {
-                      print("error");
-                    }
-                  },
-                  child: const Text('Add Product'),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: MediaQuery.sizeOf(context).height*.06,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _addProduct();
+                        print("add product");
+                      }
+                      else  {
+                        print("error");
+                      }
+                    },
+                    child: const Text('Add Product',style: TextStyle(color: Colors.white),),
+                  ),
                 ),
               )
             ],

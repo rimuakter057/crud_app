@@ -72,7 +72,6 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
         children: [
           TextFormField(
             controller: _nameTEController,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: const InputDecoration(
                 hintText: 'Name', labelText: 'Product name'),
             validator: (String? value) {
@@ -85,7 +84,6 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           const SizedBox(height: 16),
           TextFormField(
             controller: _priceTEController,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
                 hintText: 'Price', labelText: 'Product Price'),
@@ -99,7 +97,6 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           const SizedBox(height: 16),
           TextFormField(
             controller: _totalPriceTEController,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
                 hintText: 'Total price', labelText: 'Product Total Price'),
@@ -113,7 +110,6 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           const SizedBox(height: 16),
           TextFormField(
             controller: _quantityTEController,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
                 hintText: 'Quantity', labelText: 'Product Quantity'),
@@ -127,7 +123,6 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           const SizedBox(height: 16),
           TextFormField(
             controller: _codeTEController,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: const InputDecoration(
                 hintText: 'Code', labelText: 'Product Code'),
             validator: (String? value) {
@@ -140,7 +135,6 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           const SizedBox(height: 16),
           TextFormField(
             controller: _imageTEController,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: const InputDecoration(
                 hintText: 'Image url', labelText: 'Product Image'),
             validator: (String? value) {
@@ -156,17 +150,24 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
             replacement: const Center(
               child: CircularProgressIndicator(),
             ),
-            child: ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _updateProduct();
-                  print("Update Product");
-                }
-                else if (_formKey.currentState!.validate() == false) {
-                  print("error");
-                }
-              },
-              child: const Text('Update Product'),
+            child: SizedBox(
+              width: double.infinity,
+              height: MediaQuery.sizeOf(context).height*.06,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black
+                ),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _updateProduct();
+                    print("Update Product");
+                  }
+                  else if (_formKey.currentState!.validate() == false) {
+                    print("error");
+                  }
+                },
+                child: const Text('Update Product',style: TextStyle(color: Colors.white),),
+              ),
             ),
           )
         ],

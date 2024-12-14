@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
+  final VoidCallback delete;
   const ProductItem({
-    super.key, required this.product,
+    super.key, required this.product, required this.delete,
   });
 
   @override
@@ -27,8 +28,8 @@ class ProductItem extends StatelessWidget {
         ],
       ),
       trailing:Wrap(children: [
-        IconButton(onPressed: (){},
-            icon:const Icon(Icons.delete)),
+        IconButton(onPressed:delete,
+            icon:const Icon(Icons.delete,color: Colors.red,)),
         IconButton(onPressed: (){
           Navigator.pushNamed(
             context,
@@ -36,7 +37,7 @@ class ProductItem extends StatelessWidget {
             arguments: product,
           );
         },
-            icon:const Icon(Icons.edit)),
+            icon:const Icon(Icons.edit,color: Colors.green,)),
       ],),
     );
   }
