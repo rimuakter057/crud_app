@@ -44,7 +44,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
         },
         child: Visibility(
           visible: _inProgress == false,
-          replacement: Center(
+          replacement: const Center(
             child: CircularProgressIndicator(),
           ),
           child: ListView.builder(

@@ -58,20 +58,20 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
   }
 
   Widget _buildProductForm(
-      GlobalKey<FormState> _formKey,
-      TextEditingController _nameTEController,
-      TextEditingController _priceTEController,
-      TextEditingController _totalPriceTEController,
-      TextEditingController _quantityTEController,
-      TextEditingController _codeTEController,
-      TextEditingController _imageTEController,
-      bool _addNewProductInProgress) {
+      GlobalKey<FormState> formKey,
+      TextEditingController nameTEController,
+      TextEditingController priceTEController,
+      TextEditingController totalPriceTEController,
+      TextEditingController quantityTEController,
+      TextEditingController codeTEController,
+      TextEditingController imageTEController,
+      bool addNewProductInProgress) {
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Column(
         children: [
           TextFormField(
-            controller: _nameTEController,
+            controller: nameTEController,
             decoration: const InputDecoration(
                 hintText: 'Name', labelText: 'Product name'),
             validator: (String? value) {
@@ -83,7 +83,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           ),
           const SizedBox(height: 16),
           TextFormField(
-            controller: _priceTEController,
+            controller: priceTEController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
                 hintText: 'Price', labelText: 'Product Price'),
@@ -96,7 +96,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           ),
           const SizedBox(height: 16),
           TextFormField(
-            controller: _totalPriceTEController,
+            controller: totalPriceTEController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
                 hintText: 'Total price', labelText: 'Product Total Price'),
@@ -109,7 +109,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           ),
           const SizedBox(height: 16),
           TextFormField(
-            controller: _quantityTEController,
+            controller: quantityTEController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
                 hintText: 'Quantity', labelText: 'Product Quantity'),
@@ -122,7 +122,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           ),
           const SizedBox(height: 16),
           TextFormField(
-            controller: _codeTEController,
+            controller: codeTEController,
             decoration: const InputDecoration(
                 hintText: 'Code', labelText: 'Product Code'),
             validator: (String? value) {
@@ -134,7 +134,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           ),
           const SizedBox(height: 16),
           TextFormField(
-            controller: _imageTEController,
+            controller: imageTEController,
             decoration: const InputDecoration(
                 hintText: 'Image url', labelText: 'Product Image'),
             validator: (String? value) {
@@ -146,7 +146,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           ),
           const SizedBox(height: 16),
           Visibility(
-            visible: _addNewProductInProgress == false,
+            visible: addNewProductInProgress == false,
             replacement: const Center(
               child: CircularProgressIndicator(),
             ),
@@ -158,11 +158,11 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
                     backgroundColor: Colors.black
                 ),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
+                  if (formKey.currentState!.validate()) {
                     _updateProduct();
                     print("Update Product");
                   }
-                  else if (_formKey.currentState!.validate() == false) {
+                  else if (formKey.currentState!.validate() == false) {
                     print("error");
                   }
                 },
