@@ -12,10 +12,10 @@ class CRUDApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-       initialRoute: '/' ,
+       initialRoute: ProductListScreen.name,
       onGenerateRoute: (RouteSettings setting){
         late Widget widget;
-      if (setting.name == '/'){
+      if (setting.name == ProductListScreen.name){
         widget = ProductListScreen();
       }else if (setting.name == AddProductScreen.name){
         widget=AddProductScreen();

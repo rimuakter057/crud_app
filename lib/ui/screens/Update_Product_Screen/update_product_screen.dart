@@ -4,6 +4,8 @@ import 'package:crud_app/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+import '../Product_List_Screen/product_list_screen.dart';
+
 class UpdateProductScreen extends StatefulWidget {
   final Product product;
   const UpdateProductScreen({super.key, required this.product});
@@ -161,6 +163,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
                   if (formKey.currentState!.validate()) {
                     _updateProduct();
                     print("Update Product");
+                    Navigator.pushNamed(context, ProductListScreen.name);
                   }
                   else if (formKey.currentState!.validate() == false) {
                     print("error");

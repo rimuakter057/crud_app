@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+import '../Product_List_Screen/product_list_screen.dart';
+
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({super.key});
   static String name = "/add-product-screen";
@@ -158,6 +160,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       if (_formKey.currentState!.validate()) {
                         _addProduct();
                         print("add product");
+                        Navigator.pushNamed(context, ProductListScreen.name);
                       }
                       else  {
                         print("error");

@@ -9,6 +9,8 @@ import 'package:http/http.dart';
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
 
+  static const String name = '/product-list-screen';
+
   @override
   State<ProductListScreen> createState() => _ProductListScreenState();
 }
@@ -30,12 +32,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
         title: const Text("product list"),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
         onPressed: () {
           Navigator.pushNamed(context, AddProductScreen.name);
         },
         child: const Icon(
           Icons.add,
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
       body: RefreshIndicator(
